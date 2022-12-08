@@ -1,0 +1,106 @@
+<div class="row">
+  <h3>User Search</h3>
+</div>
+<hr />
+Use any combination of fields below to search through all users
+<br />
+<br />
+<!--<a routerLink="/create">Add new Vendor....</a>-->
+<div style="width: 100%">
+  <div
+    style="
+      width: 50%;
+      height: 100px;
+      float: left;
+      padding-left: 5px;
+      padding-right: 5px;
+    "
+  >
+    <label>First Name</label>
+    <input
+      type="search"
+      class="form-control w-100"
+      placeholder="First Name"
+      [(ngModel)]="firstName"
+    />
+  </div>
+  <div
+    style="
+      margin-left: 50%;
+      height: 100px;
+      padding-left: 5px;
+      padding-right: 5px;
+    "
+  >
+    <label>Last Name</label>
+    <input
+      type="search"
+      class="form-control w-100"
+      placeholder="Last Name"
+      [(ngModel)]="lastName"
+    />
+  </div>
+</div>
+<div
+  style="
+    width: 50%;
+    height: 100px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+  "
+>
+  <label>Date of Birth</label>
+  <input
+    type="search"
+    class="form-control w-100"
+    placeholder="yyyy-MM-dd"
+    [(ngModel)]="dob"
+  />
+</div>
+<div
+  style="
+    width: 50%;
+    height: 100px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+  "
+>
+  <label>Application No</label>
+  <input
+    type="search"
+    class="form-control w-100"
+    placeholder="Aplication No"
+    [(ngModel)]="applicationNo"
+  />
+</div>
+
+<hr />
+
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Application No</th>
+    <th>Member Id</th>
+    <th>First Name</th>
+    <th>Middle Name</th>
+    <th>Last Name</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let patient of patients | searchUser: firstName:lastName:applicationNo:dob"
+  >
+    <td>{{ patient.applicationNo }}</td>
+    <td>{{ patient.memberId }}</td>
+    <td>{{ patient.firstName }}</td>
+    <td>{{ patient.middleName }}</td>
+    <td>{{ patient.lastName }}</td>
+    <td>{{ patient.dob }}</td>
+    <td>{{ patient.gender }}</td>
+  </tr>
+  </tbody>
+</table>
